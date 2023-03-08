@@ -1,0 +1,195 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"><title>Semi-Supervised and Unsupervised Deep Visual Learning A Survey | gx's blog</title><meta name="author" content="GX"><meta name="copyright" content="GX"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Semi-Supervised and Unsupervised Deep Visual Learning: A Survey 1. 摘要最先进的深度学习模型通常是用大量昂贵的标记训练数据进行训练。然而，要求详尽的人工注释可能会降低模型在有限标签制度下的泛化能力。半监督学习和无监督学习提供了很有前途的范式，可以从大量的无标签的视觉数据中学习。这些范式的最新进展表明，利用无标签数据来提高模型的通用性">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Semi-Supervised and Unsupervised Deep Visual Learning A Survey">
+<meta property="og:url" content="https://gx-njx.github.io/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/index.html">
+<meta property="og:site_name" content="gx&#39;s blog">
+<meta property="og:description" content="Semi-Supervised and Unsupervised Deep Visual Learning: A Survey 1. 摘要最先进的深度学习模型通常是用大量昂贵的标记训练数据进行训练。然而，要求详尽的人工注释可能会降低模型在有限标签制度下的泛化能力。半监督学习和无监督学习提供了很有前途的范式，可以从大量的无标签的视觉数据中学习。这些范式的最新进展表明，利用无标签数据来提高模型的通用性">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
+<meta property="article:published_time" content="2023-02-19T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-03-08T09:10:16.417Z">
+<meta property="article:author" content="GX">
+<meta property="article:tag" content="paper-reading">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://gx-njx.github.io/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Semi-Supervised and Unsupervised Deep Visual Learning A Survey',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-03-08 17:10:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="gx's blog"><span class="site-name">gx's blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Semi-Supervised and Unsupervised Deep Visual Learning A Survey</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2023-02-19T16:00:00.000Z" title="Created 2023-02-20 00:00:00">2023-02-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2023-03-08T09:10:16.417Z" title="Updated 2023-03-08 17:10:16">2023-03-08</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Semi-Supervised and Unsupervised Deep Visual Learning A Survey"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>Semi-Supervised and Unsupervised Deep Visual Learning: A Survey</p>
+<h1 id="1-摘要"><a href="#1-摘要" class="headerlink" title="1. 摘要"></a>1. 摘要</h1><p>最先进的深度学习模型通常是用大量昂贵的标记训练数据进行训练。然而，要求详尽的人工注释可能会降低模型在有限标签制度下的泛化能力。半监督学习和无监督学习提供了很有前途的范式，可以从大量的无标签的视觉数据中学习。这些范式的最新进展表明，利用无标签数据来提高模型的通用性和提供更好的模型初始化有很大好处。在这项调查中，我们从一个统一的角度回顾了最近关于视觉识别的半监督学习（SSL）和无监督学习（UL）的高级深度学习算法。为了对这些领域的先进技术有一个整体的了解，我们提出了一个统一的分类法。我们对现有的具有代表性的SSL和UL进行了全面而深刻的分析，以突出它们在不同的学习场景和不同的计算机视觉任务中的应用的设计原理。最后，我们讨论了SSL和UL的新趋势和开放性挑战，以阐明未来的关键研究方向。</p>
+<h1 id="2-主要内容"><a href="#2-主要内容" class="headerlink" title="2. 主要内容"></a>2. 主要内容</h1><h2 id="2-1-总体定义"><a href="#2-1-总体定义" class="headerlink" title="2.1 总体定义"></a>2.1 总体定义</h2><p>下图1总结了本综述所涉及的两种范式，它们都利用无标签数据进行视觉表征学习。根据是否为一小部分训练数据提供了标签注释，我们将这些范式归类为半监督学习和无监督学习。</p>
+<img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265589824.png" class="">
+
+<p>半监督学习（Semi-Supervised Learning，SSL）旨在从稀疏的标签数据和大量的辅助性无标签数据中共同学习，这些数据通常来自与标签数据相同的基础数据分布。在标准的封闭集SSL中，标记的和未标记的数据属于同一领域的同一组类。在开放集SSL中，它们可能不在同一个标签空间中，即未标记的数据可能包含未知和&#x2F;或错误标记的类别。<br>无监督学习（UL）的目的是在不利用任何任务相关的标签监督的情况下，只从无标签的数据中学习。一旦训练完成，模型就可以使用标签数据进行微调，以便在下游任务中实现更好的模型泛化。</p>
+<h2 id="2-2-半监督学习"><a href="#2-2-半监督学习" class="headerlink" title="2.2 半监督学习"></a>2.2 半监督学习</h2><h3 id="2-2-1-问题定义"><a href="#2-2-1-问题定义" class="headerlink" title="2.2.1 问题定义"></a>2.2.1 问题定义</h3><img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265597399.png" class="">
+
+<p>半监督学习（SSL）旨在从一小组有标签的数据和一大组无标签的数据中共同学习。在许多SSL方法中，损失函数中的超参数λu（L &#x3D; (1-λu)Lsup + λuLunsup）通常是一个斜坡加权函数（即λ&#x3D;w(t)，t是训练迭代），它在训练期间逐渐增加无监督损失项的重要性。</p>
+<h3 id="2-2-2-评价方法"><a href="#2-2-2-评价方法" class="headerlink" title="2.2.2 评价方法"></a>2.2.2 评价方法</h3><p>为了测试一个SSL模型是否有效地利用了未标记的数据，通常采用两个评价标准。首先，该模型需要优于仅从标记数据中学习的监督基线。第二，当增加训练集中无标签样本的比例时，相比监督基线的改进幅度会相应增加。总的来说，这些改进的幅度表明SSL方法的有效性和稳健性。</p>
+<h3 id="2-2-3-半监督的假设"><a href="#2-2-3-半监督的假设" class="headerlink" title="2.2.3 半监督的假设"></a>2.2.3 半监督的假设</h3><p>SSL的主要假设包括平滑性假设和流形假设——后者也被称为集群假设, 结构假设, 和低密度分离假设。 具体来说，平滑性假设认为附近的数据点有可能共享相同的类标签。流形假设认为位于同一结构（即同一聚类或流形）内的数据点应该共享同一类别标签。换句话说，前者是对附近的数据点进行局部的假设，而后者是基于聚类或图形成的底层数据结构进行全局的假设。</p>
+<h2 id="2-3-半监督方法分类"><a href="#2-3-半监督方法分类" class="headerlink" title="2.3 半监督方法分类"></a>2.3 半监督方法分类</h2><p>现有的SSL方法通常假设未标记的数据是封闭的，并且是特定任务的，也就是说，所有未标记的训练样本都属于预先定义的类集。大多数现有工作的共同想法是根据某种底层数据结构，如流形结构和图结构，为每个未标记的样本分配一个类标签。我们将最具代表性的半监督深度学习方法分为五类：一致性正则化、自我训练、基于图的正则化、深度生成模型和自我监督学习。</p>
+<img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265604968.png" class="">
+
+<h3 id="2-3-1-一致性正则化"><a href="#2-3-1-一致性正则化" class="headerlink" title="2.3.1 一致性正则化"></a>2.3.1 一致性正则化</h3><p>其基本原理是在输入空间和（或）模型空间的变化下强制执行一致的模型输出。这些变化通常通过添加噪声、扰动或形成相同输入或模型的变体来实现。</p>
+<img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265614536.png" class="">
+
+<h3 id="2-3-2-自我训练"><a href="#2-3-2-自我训练" class="headerlink" title="2.3.2 自我训练"></a>2.3.2 自我训练</h3><p>自我训练方法通过对具有高置信度的预测样本的标签进行归纳，从无标签数据中学习[23], [24], [92]。它最初是为传统的机器学习模型提出的，如逻辑回归[92]、双叉图[23]和Naive Bayes分类器[24]。它在深度神经网络中被重新审视，以从大量的未标记数据和有限的标记数据中学习。我们回顾了自我训练的三个代表性工作，包括熵最小化、协同训练和蒸馏，如下所示。</p>
+<img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265624787.png" class="">
+
+<p>熵最小化是基于低密度分离假设对模型训练进行规整，以强制要求将类的决策边界放在低密度区域。这也符合聚类假设和流形假设, 假设同一类别的数据点可能共享同一聚类或流形。<br>联合训练在来自不同来源的同一样本的多个视图上学习两个或多个分类器。从概念上讲，联合训练框架在两个不同但互补的数据视图上训练两个独立的分类器模型，并以跨模型的方式归纳预测的标签。协同训练的基本思想可以从双视图扩展到三视图或多视图–例如，在Tri-training中，三个分类器被一起训练，当其中两个分类器的预测结果一致且置信度分数高于阈值时，将标签分配给未标注的数据。<br>蒸馏法最初是为了将教师模型学到的知识转移给学生模型，其中教师模型的软目标（例如，一个网络集合或一个更大的网络）可以作为一个有效的正则器或模型压缩策略来训练学生模型。最近在SSL中的工作使用蒸馏法在未标记的数据上归纳学习目标，以训练学生网络。</p>
+<h3 id="2-3-3-基于图的正则化"><a href="#2-3-3-基于图的正则化" class="headerlink" title="2.3.3 基于图的正则化"></a>2.3.3 基于图的正则化</h3><p>基于图的正则化是最初为非深度半监督学习算法提出的一系列过渡性学习方法，如过渡性支持向量机和高斯随机场模型。这个系列的大多数算法都建立了一个加权图来利用数据样本之间的关系。具体来说，有标签和无标签的样本都被表示为节点，而边缘权重编码不同样本之间的相似性。标签可以根据平滑度假设在图上传播，即相邻的数据点应该共享相同的类别标签，如下图所示。</p>
+<img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265636147.png" class="">
+
+<p>基于图的特征正则化通常是通过建立一个可学习的近邻（NN）图来完成的，该图增强了原始DNN来编码特征空间中数据点之间的亲和力，如EmbedCNN和Teacher Graph所代表。图中的每个节点都由中间网络层提取的视觉特征或最后一层的输出来编码；同时计算亲和矩阵Wij来编码所有节点间的成对相似性。为了利用未标记的数据，基于图的正则化项可以形成一个度量学习损失，例如连体网络的基于边际的对比损失，它通过强制执行局部平滑性来约束特征学习。<br>基于图的预测正则化在预测空间中运行，就像标签传播一样。在标签传播中，受上述建立可学习的NN图的相同原理的驱动，编码数据点之间的相似性的NN图被用来将标签从有标签的数据传播到无标签的数据，基于跨熵损失的反证法。虽然与Pseudo-Labels的方法类似，但传播的标签是通过一个编码全局流形结构的外部NN图来获得的。此外，图上的标签传播和DNN的更新是交替进行的，以传播更可靠的标签。</p>
+<h3 id="2-3-4-深度生成模型"><a href="#2-3-4-深度生成模型" class="headerlink" title="2.3.4 深度生成模型"></a>2.3.4 深度生成模型</h3><p>深度生成模型是一类无监督学习模型，它在没有标签的情况下学习近似的数据分布。通过将生成式无监督学习概念整合到有监督模型中，可以制定一个半监督学习框架，以统一监督和无监督学习的优点。深度生成模型的两个主要流派是变异自动编码器（VAE）和生成对抗网络（GAN）。</p>
+<img src="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/1678265646248.png" class="">
+
+<p>在基于GAN的深度生成模型中，判别器将标记的样本分配给K类，将生成的未标记的数据分配给一个辅助类（K+1）。在测试时，判别器充当分类器。<br>变分自动编码器（VAE）是基于变分推理的概率模型，用于复杂数据分布的无监督学习。一个标准的VAE模型包含一个将输入样本编码为潜伏变量的网络和一个将潜伏变量解码以重建输入的网络；最大化变异下限。在半监督学习中, 一个无监督的VAE模型通常与一个监督分类器相结合。例如，为了预测SSL中需要的特定任务的类信息，类条件VAE和ADGM将类标签作为潜特征空间中的一个额外的潜变量引入，明确地将类信息（内容）和随机信息（风格）分开，并在标记的数据上施加一个明确的分类损失和虚化的VAE损失。<br>生成性对抗网络（GANs）[110]通过对抗性最小化游戏来学习捕捉数据分布。具体来说，生成器被训练成尽可能地生成真实的图像，而鉴别器被训练成在真实和生成的样本之间进行鉴别。当重新表述为一个半监督的表征学习者时，GANs可以利用无监督的生成模型和监督的判别学习的好处。</p>
+<h3 id="2-3-5-自我监督学习"><a href="#2-3-5-自我监督学习" class="headerlink" title="2.3.5 自我监督学习"></a>2.3.5 自我监督学习</h3><p>自我监督学习是一类基于无监督的代用（pretext）任务设计的无监督表征学习器。自监督不同于自训练算法，因为自监督学习目标是任务无关的，可以在没有任何标签监督的情况下进行训练。前者最初被提出来只从无标签的数据中学习，具有任务无关的无监督学习目标，但它也被探索用于SSL。在SSL中，所有训练数据上的任务无关的自我监督信号通常与标记数据上的监督学习目标相结合。例如，S4L在SSL中使用了基于多个自我监督信号的自我监督，如预测旋转度和强制执行典范转换不变性，与监督学习一起训练模型。SimCLR和SimCLRv2是引入自监督对比学习的后续工作，用于任务无关的无监督预训练，然后是有监督或半监督的微调，标签监督是下游任务。<br>后续的无监督学习和研究关系不是很紧密。</p>
+<h1 id="3-启发"><a href="#3-启发" class="headerlink" title="3. 启发"></a>3. 启发</h1><p>半监督方法有很多，并且也有很多的研究方向。在了解了大致的半监督思路之后，在我的噪声学习中首先从简单的方法开始，先尝试基于一致性准则的模型输出一致损失。半监督主要的原理都是从样本自身的特征出发，让模型去学习样本特征从而找到所有样本的标签对应关系。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="https://gx-njx.github.io">GX</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="https://gx-njx.github.io/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/">https://gx-njx.github.io/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/paper-reading/">paper-reading</a></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2023/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F%E7%A0%94%E7%A9%B6%E7%BB%BC%E8%BF%B0/" title="深度学习中知识蒸馏研究综述"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">深度学习中知识蒸馏研究综述</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2023/Positive-Incentive%20Noise/" title="Positive-Incentive Noise"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">Positive-Incentive Noise</div></div></a></div><div><a href="/2023/MixMatch%20A%20Holistic%20Approach%20to%20Semi-Supervised%20Learning/" title="MixMatch A Holistic Approach to Semi-Supervised Learning"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">MixMatch A Holistic Approach to Semi-Supervised Learning</div></div></a></div><div><a href="/2023/Remote%20Sensing%20Image%20Scene%20Classification%20with%20Noisy%20Label%20Distillation/" title="Remote Sensing Image Scene Classification with Noisy Label Distillation"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">Remote Sensing Image Scene Classification with Noisy Label Distillation</div></div></a></div><div><a href="/2023/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F%E7%A0%94%E7%A9%B6%E7%BB%BC%E8%BF%B0/" title="深度学习中知识蒸馏研究综述"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-20</div><div class="title">深度学习中知识蒸馏研究综述</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">GX</div><div class="author-info__description">Just simply share somgthing, thanks for visit!</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">1</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/gx-njx" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:1284700826@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-%E6%91%98%E8%A6%81"><span class="toc-number">1.</span> <span class="toc-text">1. 摘要</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-number">2.</span> <span class="toc-text">2. 主要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E6%80%BB%E4%BD%93%E5%AE%9A%E4%B9%89"><span class="toc-number">2.1.</span> <span class="toc-text">2.1 总体定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E5%8D%8A%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.2.</span> <span class="toc-text">2.2 半监督学习</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-%E9%97%AE%E9%A2%98%E5%AE%9A%E4%B9%89"><span class="toc-number">2.2.1.</span> <span class="toc-text">2.2.1 问题定义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-2-%E8%AF%84%E4%BB%B7%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.2.</span> <span class="toc-text">2.2.2 评价方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-3-%E5%8D%8A%E7%9B%91%E7%9D%A3%E7%9A%84%E5%81%87%E8%AE%BE"><span class="toc-number">2.2.3.</span> <span class="toc-text">2.2.3 半监督的假设</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E5%8D%8A%E7%9B%91%E7%9D%A3%E6%96%B9%E6%B3%95%E5%88%86%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">2.3 半监督方法分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-1-%E4%B8%80%E8%87%B4%E6%80%A7%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-number">2.3.1.</span> <span class="toc-text">2.3.1 一致性正则化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-2-%E8%87%AA%E6%88%91%E8%AE%AD%E7%BB%83"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.3.2 自我训练</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-3-%E5%9F%BA%E4%BA%8E%E5%9B%BE%E7%9A%84%E6%AD%A3%E5%88%99%E5%8C%96"><span class="toc-number">2.3.3.</span> <span class="toc-text">2.3.3 基于图的正则化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-4-%E6%B7%B1%E5%BA%A6%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.3.4.</span> <span class="toc-text">2.3.4 深度生成模型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-5-%E8%87%AA%E6%88%91%E7%9B%91%E7%9D%A3%E5%AD%A6%E4%B9%A0"><span class="toc-number">2.3.5.</span> <span class="toc-text">2.3.5 自我监督学习</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-%E5%90%AF%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">3. 启发</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/Positive-Incentive%20Noise/" title="Positive-Incentive Noise">Positive-Incentive Noise</a><time datetime="2023-02-19T16:00:00.000Z" title="Created 2023-02-20 00:00:00">2023-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/MixMatch%20A%20Holistic%20Approach%20to%20Semi-Supervised%20Learning/" title="MixMatch A Holistic Approach to Semi-Supervised Learning">MixMatch A Holistic Approach to Semi-Supervised Learning</a><time datetime="2023-02-19T16:00:00.000Z" title="Created 2023-02-20 00:00:00">2023-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/Remote%20Sensing%20Image%20Scene%20Classification%20with%20Noisy%20Label%20Distillation/" title="Remote Sensing Image Scene Classification with Noisy Label Distillation">Remote Sensing Image Scene Classification with Noisy Label Distillation</a><time datetime="2023-02-19T16:00:00.000Z" title="Created 2023-02-20 00:00:00">2023-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E4%B8%AD%E7%9F%A5%E8%AF%86%E8%92%B8%E9%A6%8F%E7%A0%94%E7%A9%B6%E7%BB%BC%E8%BF%B0/" title="深度学习中知识蒸馏研究综述">深度学习中知识蒸馏研究综述</a><time datetime="2023-02-19T16:00:00.000Z" title="Created 2023-02-20 00:00:00">2023-02-20</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/Semi-Supervised%20and%20Unsupervised%20Deep%20Visual%20Learning%20A%20Survey/" title="Semi-Supervised and Unsupervised Deep Visual Learning A Survey">Semi-Supervised and Unsupervised Deep Visual Learning A Survey</a><time datetime="2023-02-19T16:00:00.000Z" title="Created 2023-02-20 00:00:00">2023-02-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By GX</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script defer="defer" id="ribbon" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="true" data-click="true"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
